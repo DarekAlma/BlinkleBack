@@ -13,6 +13,10 @@ router.post("/", (req,res) =>{
       const password=req.body.password;
       const email=req.body.email;
 
+      if (!username || !password || !email) {
+        return res.status(400).json({ error: "Faltan parámetros obligatorios: username, password, email" });
+      }
+
       const existingUser = users.find(user => user.username === username);
         if (existingUser) {
             return res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
