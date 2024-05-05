@@ -7,6 +7,7 @@ const router =express.Router();
 router.use(express.urlencoded({ extended: true })); // para acceder al body
 router.use(express.json());
 
+//Ruta para el registro de un nuevo usuario
 router.post("/", (req,res) =>{
     try{
       const username=req.body.username;

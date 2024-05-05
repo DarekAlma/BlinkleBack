@@ -8,6 +8,8 @@ const router =express.Router();
 router.use(express.urlencoded({ extended: true })); // para acceder al body
 router.use(express.json());
 
+//Ruta para Conseguir todos los blinks de todos los usuarios
+
 router.get("/", (req, res) => {
     try {
         let allBlinks = [];
@@ -26,6 +28,8 @@ router.get("/", (req, res) => {
     }
 
 });
+
+//Ruta para Postear un blink
 
 router.post("/", (req,res) =>{
     try{
@@ -62,6 +66,28 @@ router.post("/", (req,res) =>{
     
   });
 
+  //Ruta para Blinks de un usuario en especifico
+
+  router.get("/:username", (req, res) => {
+    try {
+        const username= req.params.username;
+
+        const user = users.find(user => user.username === username);
+
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        res.json(user.blinks);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+
+});
+
+//Ruta para Editar un blink
   router.post("/:blinkId", (req,res) =>{
     try{
       const username=req.body.username;

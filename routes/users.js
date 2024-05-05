@@ -7,6 +7,8 @@ const router =express.Router();
 router.use(express.urlencoded({ extended: true })); // para acceder al body
 router.use(express.json());
 
+//Ruta para obtener todos los usuarios
+
 router.get("/", (req, res) => {
     res.json(users);
 });
