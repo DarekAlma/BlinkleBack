@@ -8,7 +8,7 @@ router.use(express.urlencoded({ extended: true })); // para acceder al body
 router.use(express.json());
 
 router.get("/", (req, res) => {
-    res.send(users);
+    res.json(users);
 });
 
 // Ruta para obtener un usuario específico
