@@ -4,7 +4,7 @@ const app= express();
 const PORT=3000;
 
 app.get("/", (req, res) => {
-  res.send("Blinkle Funcionando :)");
+  res.send("Blinkle Funcionando :)   /sign     /log     /users   /users/:username   /blinks   /blinks/:username   /blinks/:blinkId  ");
 });
 
 const signInRouter=require("./routes/signin");
